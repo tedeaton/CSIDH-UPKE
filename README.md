@@ -1,13 +1,12 @@
-# CSI-FiSh
-Repo for the implementation of the isogeny based signature scheme CSI-FiSh
-
-## classgroup_data 
-This folder contains the class number, discrete logarithms and a HKZ reduced basis of the relation lattice
+# CSIDH-UPKE
+This is a fork of the [CSI-FiSh codebase](https://github.com/KULeuven-COSIC/CSI-FiSh) to demonstrate updatable publick key encryption with CSIDH. 
 
 ## implementation 
 
 The implementation depends on GMP for the Babai nearest plane step
 
-Build with "make testcsifish"
+Build with "make upketest"
 
-Run with "./testcsifish"
+Run with "./upketest"
+
+It has been tested on Ubuntu 18.04
