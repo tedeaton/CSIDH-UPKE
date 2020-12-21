@@ -5,8 +5,18 @@ This is a fork of the [CSI-FiSh codebase](https://github.com/KULeuven-COSIC/CSI-
 
 The implementation depends on GMP for the Babai nearest plane step
 
+All dependencies:
+* make
+* xsltproc
+* gcc
+* libgmp-dev
+* libssl-dev
+
+## running
+
+First run "make keccaklib"
 Build with "make upketest"
 
 Run with "./upketest"
 
-It has been tested on Ubuntu 18.04
+It has been tested on Ubuntu 20.04
