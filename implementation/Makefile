@@ -21,6 +21,9 @@ all:
 	@cc \
 		-I ./ \
 		-I p${BITS}/ \
+		-I XKCP/bin/generic64/ \
+		-I XKCP/bin/generic64/libkeccak.a.headers/ \
+		-L XKCP/bin/generic64/ \
 		-std=c99 -pedantic \
 		-Wall -Wextra \
 		-march=native -O3 \
@@ -32,7 +35,7 @@ all:
 		csidh.c \
 		main.c \
 		reduce.c \
-		-o main -lm -lgmp -lcrypto
+		-o main -lm -lgmp -lcrypto -lkeccak
 
 debug:
 	cc \
@@ -116,7 +119,27 @@ disttest: disttest.c classgroup.c classgroup.h reduce.c reduce.h keccaklib csidh
 		-o disttest -lm -g -lgmp -lcrypto -lkeccak
 
 keccaklib: 
-	(cd XKCP; make generic64/libkeccak.a)
+		(cd XKCP; make generic64/libkeccak.a)
+
+upketest:
+	@cc \
+		-I ./ \
+		-I p${BITS}/ \
+		-I XKCP/bin/generic64/ \
+		-I XKCP/bin/generic64/libkeccak.a.headers/ \
+		-L XKCP/bin/generic64/ \
+		-std=c99 -pedantic \
+		-Wall -Wextra \
+		-march=native -O3 \
+		p${BITS}/constants.c \
+		rng.c \
+		${UINT_IMPL} ${FP_IMPL} \
+		mont.c \
+		classgroup.c \
+		csidh.c \
+		upke_test.c \
+		reduce.c \
+		-o upketest -lm -lgmp -lcrypto -lkeccak
 
 clean:
 	@rm -f main bench testcsifish
